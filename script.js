@@ -1,193 +1,174 @@
 /* =========================================================
    MY OCEAN WORLD
-   INTERACTION ENGINE
-========================================================= */
+   MAIN JAVASCRIPT
+   ========================================================= */
+
+
+/* =========================================================
+   DOM READY
+   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    initLoader();
 
-    /* =====================================================
-       LOADING SCREEN
-    ===================================================== */
+    initTheme();
 
-    const loadingScreen =
-        document.querySelector(".loading-screen");
+    initMobileMenu();
 
-    setTimeout(() => {
+    initScrollReveal();
 
-        if (loadingScreen) {
+    initScrollProgress();
 
-            loadingScreen.classList.add("loaded");
+    initMouseGlow();
 
-        }
+    initTiltCards();
 
-    }, 900);
+    initImages();
 
+    initAudio();
 
-    /* =====================================================
-       MOUSE GLOW
-    ===================================================== */
+    initDepthCounter();
 
-    const mouseGlow =
-        document.querySelector(".mouse-glow");
+    initNexusButton();
 
-    if (mouseGlow) {
+    initClickEffects();
 
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-
-        let glowX = mouseX;
-        let glowY = mouseY;
+});
 
 
-        window.addEventListener("mousemove", (event) => {
+/* =========================================================
+   LOADING SCREEN
+   ========================================================= */
 
-            mouseX = event.clientX;
-            mouseY = event.clientY;
+function initLoader() {
 
-        });
+    const loader =
+        document.getElementById("loader");
 
-
-        function animateGlow() {
-
-            glowX +=
-                (mouseX - glowX) * 0.12;
-
-            glowY +=
-                (mouseY - glowY) * 0.12;
-
-            mouseGlow.style.left =
-                glowX + "px";
-
-            mouseGlow.style.top =
-                glowY + "px";
-
-            requestAnimationFrame(
-                animateGlow
-            );
-
-        }
-
-        animateGlow();
-
+    if (!loader) {
+        return;
     }
 
 
-    /* =====================================================
-       MOBILE MENU
-    ===================================================== */
+    let percent = 0;
 
-    const mobileMenu =
-        document.querySelector("#mobileMenu");
-
-    const navLinks =
-        document.querySelector(".nav-links");
+    const percentText =
+        loader.querySelector(".loader-percent");
 
 
-    if (mobileMenu && navLinks) {
+    const interval =
+        setInterval(() => {
 
-        mobileMenu.addEventListener(
-            "click",
-            () => {
+            percent +=
+                Math.floor(
+                    Math.random() * 14
+                ) + 5;
 
-                navLinks.classList.toggle(
-                    "open"
-                );
+
+            if (percent >= 100) {
+
+                percent = 100;
+
+                clearInterval(interval);
+
+                if (percentText) {
+
+                    percentText.textContent =
+                        "100%";
+
+                }
+
+                setTimeout(() => {
+
+                    loader.classList.add("loaded");
+
+                }, 350);
 
             }
-        );
 
 
-        document
-            .querySelectorAll(".nav-links a")
-            .forEach((link) => {
+            if (percentText) {
 
-                link.addEventListener(
-                    "click",
-                    () => {
+                percentText.textContent =
+                    String(percent).padStart(3, "0") + "%";
 
-                        navLinks.classList.remove(
-                            "open"
-                        );
+            }
 
-                    }
-                );
+        }, 120);
 
-            });
-
-    }
+}
 
 
-    /* =====================================================
-       THEME SYSTEM
-    ===================================================== */
+/* =========================================================
+   THEME
+   ========================================================= */
 
-    const themeButton =
-        document.querySelector("#themeToggle");
-
-    const themeText =
-        document.querySelector("#themeText");
+function initTheme() {
 
     const body =
         document.body;
 
+    const toggle =
+        document.getElementById("themeToggle");
 
-    let savedTheme =
-        localStorage.getItem(
-            "myOceanTheme"
-        );
+    const themeText =
+        document.getElementById("themeText");
 
 
-    if (!savedTheme) {
+    if (!toggle) {
+        return;
+    }
 
-        savedTheme = "abyss";
+
+    const savedTheme =
+        localStorage.getItem("myOceanTheme");
+
+
+    if (savedTheme === "nexus") {
+
+        body.dataset.theme =
+            "nexus";
+
+        updateThemeText();
 
     }
 
 
-    body.dataset.theme =
-        savedTheme;
+    toggle.addEventListener(
+        "click",
+        () => {
+
+            const current =
+                body.dataset.theme ||
+                "abyss";
 
 
-    updateThemeText();
+            if (current === "abyss") {
 
+                body.dataset.theme =
+                    "nexus";
 
-    if (themeButton) {
+            } else {
 
-        themeButton.addEventListener(
-            "click",
-            () => {
-
-                if (
-                    body.dataset.theme ===
-                    "abyss"
-                ) {
-
-                    body.dataset.theme =
-                        "nexus";
-
-                } else {
-
-                    body.dataset.theme =
-                        "abyss";
-
-                }
-
-
-                localStorage.setItem(
-                    "myOceanTheme",
-                    body.dataset.theme
-                );
-
-
-                updateThemeText();
-
-                createThemeBurst();
+                body.dataset.theme =
+                    "abyss";
 
             }
-        );
 
-    }
+
+            localStorage.setItem(
+                "myOceanTheme",
+                body.dataset.theme
+            );
+
+
+            updateThemeText();
+
+            createThemeBurst();
+
+        }
+    );
 
 
     function updateThemeText() {
@@ -214,102 +195,168 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+}
 
-    /* =====================================================
-       THEME BURST
-    ===================================================== */
 
-    function createThemeBurst() {
+/* =========================================================
+   THEME BURST
+   ========================================================= */
 
-        const burst =
-            document.createElement(
-                "div"
-            );
+function createThemeBurst() {
 
-        burst.style.position =
-            "fixed";
+    const burst =
+        document.createElement("div");
 
-        burst.style.inset =
-            "0";
+    burst.className =
+        "theme-burst";
 
-        burst.style.pointerEvents =
-            "none";
 
-        burst.style.zIndex =
-            "9998";
+    burst.style.position =
+        "fixed";
 
-        burst.style.background =
-            "radial-gradient(circle, rgba(77,234,255,0.22), transparent 55%)";
+    burst.style.inset =
+        "0";
+
+    burst.style.pointerEvents =
+        "none";
+
+    burst.style.zIndex =
+        "9998";
+
+    burst.style.background =
+        "radial-gradient(circle, rgba(82,239,255,0.12), transparent 50%)";
+
+    burst.style.opacity =
+        "0";
+
+
+    document.body.appendChild(
+        burst
+    );
+
+
+    requestAnimationFrame(() => {
+
+        burst.style.transition =
+            "opacity 0.5s ease";
+
+        burst.style.opacity =
+            "1";
+
+    });
+
+
+    setTimeout(() => {
 
         burst.style.opacity =
             "0";
 
-        burst.style.transition =
-            "opacity 0.6s ease";
+    }, 80);
 
-        document.body.appendChild(
-            burst
+
+    setTimeout(() => {
+
+        burst.remove();
+
+    }, 700);
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+function initMobileMenu() {
+
+    const button =
+        document.getElementById(
+            "menuButton"
+        );
+
+    const menu =
+        document.getElementById(
+            "mobileMenu"
         );
 
 
-        requestAnimationFrame(() => {
-
-            burst.style.opacity =
-                "1";
-
-        });
-
-
-        setTimeout(() => {
-
-            burst.style.opacity =
-                "0";
-
-        }, 100);
-
-
-        setTimeout(() => {
-
-            burst.remove();
-
-        }, 800);
-
+    if (!button || !menu) {
+        return;
     }
 
 
-    /* =====================================================
-       SCROLL REVEAL
-    ===================================================== */
+    button.addEventListener(
+        "click",
+        () => {
 
-    const revealElements =
+            menu.classList.toggle(
+                "open"
+            );
+
+        }
+    );
+
+
+    const links =
+        menu.querySelectorAll("a");
+
+
+    links.forEach(link => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                menu.classList.remove(
+                    "open"
+                );
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+function initScrollReveal() {
+
+    const elements =
         document.querySelectorAll(
             ".reveal"
         );
 
 
-    const revealObserver =
+    if (!elements.length) {
+        return;
+    }
+
+
+    const observer =
         new IntersectionObserver(
-            (entries) => {
+            entries => {
 
-                entries.forEach(
-                    (entry) => {
+                entries.forEach(entry => {
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
+                        entry.target.classList.add(
+                            "visible"
+                        );
 
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-
-                        }
+                        observer.unobserve(
+                            entry.target
+                        );
 
                     }
-                );
+
+                });
 
             },
             {
@@ -318,132 +365,182 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    revealElements.forEach(
-        (element) => {
+    elements.forEach(
+        element => {
 
-            revealObserver.observe(
+            observer.observe(
                 element
             );
 
         }
     );
 
+}
 
-    /* =====================================================
-       SCROLL PROGRESS
-    ===================================================== */
+
+/* =========================================================
+   SCROLL PROGRESS
+   ========================================================= */
+
+function initScrollProgress() {
 
     const progress =
-        document.querySelector(
-            ".scroll-progress"
+        document.getElementById(
+            "scrollProgress"
         );
 
 
-    function updateScrollProgress() {
+    if (!progress) {
+        return;
+    }
+
+
+    function update() {
 
         const scrollTop =
             window.scrollY;
 
-        const documentHeight =
+        const height =
             document.documentElement
                 .scrollHeight -
             window.innerHeight;
 
 
-        let percentage = 0;
+        const percentage =
+            height > 0
+                ? (scrollTop / height) * 100
+                : 0;
 
 
-        if (documentHeight > 0) {
-
-            percentage =
-                (scrollTop /
-                    documentHeight) *
-                100;
-
-        }
-
-
-        if (progress) {
-
-            progress.style.width =
-                percentage + "%";
-
-        }
+        progress.style.width =
+            percentage + "%";
 
     }
 
 
     window.addEventListener(
         "scroll",
-        updateScrollProgress,
+        update,
         { passive: true }
     );
 
 
-    updateScrollProgress();
+    update();
+
+}
 
 
-    /* =====================================================
-       PARALLAX CREATURES
-    ===================================================== */
+/* =========================================================
+   MOUSE GLOW
+   ========================================================= */
 
-    const creatures =
-        document.querySelectorAll(
-            ".fish, .jellyfish, .squid, .whale-shadow"
+function initMouseGlow() {
+
+    const glow =
+        document.querySelector(
+            ".mouse-glow"
         );
 
 
+    if (!glow) {
+        return;
+    }
+
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let currentX = 0;
+    let currentY = 0;
+
+
     window.addEventListener(
-        "scroll",
-        () => {
+        "mousemove",
+        event => {
 
-            const scrollY =
-                window.scrollY;
+            mouseX =
+                event.clientX;
+
+            mouseY =
+                event.clientY;
 
 
-            creatures.forEach(
-                (creature, index) => {
+            glow.style.opacity =
+                "1";
 
-                    const speed =
-                        0.02 +
-                        index * 0.006;
-
-                    creature.style.translate =
-                        `0 ${scrollY * speed}px`;
-
-                }
-            );
-
-        },
-        { passive: true }
+        }
     );
 
 
-    /* =====================================================
-       TILT CARDS
-    ===================================================== */
+    window.addEventListener(
+        "mouseleave",
+        () => {
 
-    const tiltCards =
+            glow.style.opacity =
+                "0";
+
+        }
+    );
+
+
+    function animate() {
+
+        currentX +=
+            (mouseX - currentX) *
+            0.12;
+
+        currentY +=
+            (mouseY - currentY) *
+            0.12;
+
+
+        glow.style.left =
+            currentX + "px";
+
+        glow.style.top =
+            currentY + "px";
+
+
+        requestAnimationFrame(
+            animate
+        );
+
+    }
+
+
+    animate();
+
+}
+
+
+/* =========================================================
+   TILT CARDS
+   ========================================================= */
+
+function initTiltCards() {
+
+    const cards =
         document.querySelectorAll(
             ".tilt-card"
         );
 
 
-    tiltCards.forEach((card) => {
+    if (
+        window.matchMedia(
+            "(pointer: coarse)"
+        ).matches
+    ) {
 
+        return;
+
+    }
+
+
+    cards.forEach(card => {
 
         card.addEventListener(
             "mousemove",
-            (event) => {
-
-                if (
-                    window.innerWidth < 800
-                ) {
-
-                    return;
-
-                }
-
+            event => {
 
                 const rect =
                     card.getBoundingClientRect();
@@ -453,35 +550,29 @@ document.addEventListener("DOMContentLoaded", () => {
                     event.clientX -
                     rect.left;
 
+
                 const y =
                     event.clientY -
                     rect.top;
 
 
-                const centerX =
-                    rect.width / 2;
-
-                const centerY =
-                    rect.height / 2;
+                const rotateY =
+                    ((x / rect.width) - 0.5)
+                    * 8;
 
 
                 const rotateX =
-                    ((y - centerY) /
-                        centerY) *
-                    -4;
-
-
-                const rotateY =
-                    ((x - centerX) /
-                        centerX) *
-                    4;
+                    ((y / rect.height) - 0.5)
+                    * -8;
 
 
                 card.style.transform =
-                    `perspective(900px)
-                     rotateX(${rotateX}deg)
-                     rotateY(${rotateY}deg)
-                     translateY(-4px)`;
+                    `
+                    perspective(900px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    translateY(-4px)
+                    `;
 
             }
         );
@@ -499,32 +590,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+}
 
-    /* =====================================================
-       IMAGE FALLBACK
-    ===================================================== */
 
-    const profileImage =
-        document.querySelector(
-            ".profile-photo"
+/* =========================================================
+   IMAGE HANDLING
+   ========================================================= */
+
+function initImages() {
+
+    const images =
+        document.querySelectorAll(
+            "img"
         );
 
 
-    if (profileImage) {
+    images.forEach(img => {
 
-        profileImage.addEventListener(
+        img.addEventListener(
             "load",
             () => {
 
-                const frame =
-                    profileImage.closest(
-                        ".profile-frame"
+                img.classList.add(
+                    "loaded"
+                );
+
+
+                const parent =
+                    img.parentElement;
+
+
+                if (!parent) {
+                    return;
+                }
+
+
+                const placeholder =
+                    parent.querySelector(
+                        ".photo-placeholder"
                     );
 
-                if (frame) {
 
-                    frame.classList.add(
-                        "has-image"
+                const fallback =
+                    parent.querySelector(
+                        ".image-fallback"
+                    );
+
+
+                if (placeholder) {
+
+                    placeholder.classList.add(
+                        "hidden"
+                    );
+
+                }
+
+
+                if (fallback) {
+
+                    fallback.classList.add(
+                        "hidden"
                     );
 
                 }
@@ -533,155 +658,390 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        profileImage.addEventListener(
+        img.addEventListener(
             "error",
             () => {
 
-                profileImage.style.display =
-                    "none";
+                img.classList.remove(
+                    "loaded"
+                );
 
             }
         );
 
-    }
+
+        if (img.complete) {
+
+            if (
+                img.naturalWidth > 0
+            ) {
+
+                img.dispatchEvent(
+                    new Event("load")
+                );
+
+            }
+
+        }
+
+    });
+
+}
 
 
-    /* =====================================================
-       HOBBY IMAGE FALLBACK
-    ===================================================== */
+/* =========================================================
+   AUDIO
+   ========================================================= */
 
-    const hobbyImages =
-        document.querySelectorAll(
-            ".hobby-image img"
+function initAudio() {
+
+    const audio =
+        document.getElementById(
+            "oceanAudio"
+        );
+
+    const button =
+        document.getElementById(
+            "audioToggle"
+        );
+
+    const player =
+        document.getElementById(
+            "audioPlayer"
         );
 
 
-    hobbyImages.forEach(
-        (image) => {
+    if (!audio || !button) {
+        return;
+    }
 
-            image.addEventListener(
-                "load",
-                () => {
 
-                    const container =
-                        image.closest(
-                            ".hobby-image"
+    button.addEventListener(
+        "click",
+        async () => {
+
+            try {
+
+                if (
+                    audio.paused
+                ) {
+
+                    await audio.play();
+
+                    button.textContent =
+                        "❚❚";
+
+                    if (player) {
+
+                        player.classList.add(
+                            "playing"
                         );
 
-                    if (container) {
+                    }
 
-                        container.classList.add(
-                            "has-image"
+                } else {
+
+                    audio.pause();
+
+                    button.textContent =
+                        "▶";
+
+                    if (player) {
+
+                        player.classList.remove(
+                            "playing"
                         );
 
                     }
 
                 }
-            );
 
+            } catch (error) {
 
-            image.addEventListener(
-                "error",
-                () => {
+                console.log(
+                    "Audio could not start.",
+                    error
+                );
 
-                    image.style.display =
-                        "none";
-
-                }
-            );
+            }
 
         }
     );
 
 
-    /* =====================================================
-       AUDIO PLAYER
-    ===================================================== */
+    audio.addEventListener(
+        "ended",
+        () => {
 
-    const audio =
-        document.querySelector(
-            "#oceanAudio"
-        );
+            button.textContent =
+                "▶";
 
-    const audioButton =
-        document.querySelector(
-            "#audioToggle"
-        );
+            if (player) {
 
-    const audioDock =
-        document.querySelector(
-            ".audio-dock"
-        );
-
-
-    if (
-        audio &&
-        audioButton
-    ) {
-
-
-        audioButton.addEventListener(
-            "click",
-            async () => {
-
-                try {
-
-                    if (
-                        audio.paused
-                    ) {
-
-                        await audio.play();
-
-                        audioButton.textContent =
-                            "Ⅱ";
-
-                        if (audioDock) {
-
-                            audioDock.classList.add(
-                                "playing"
-                            );
-
-                        }
-
-                    } else {
-
-                        audio.pause();
-
-                        audioButton.textContent =
-                            "▶";
-
-                        if (audioDock) {
-
-                            audioDock.classList.remove(
-                                "playing"
-                            );
-
-                        }
-
-                    }
-
-                } catch (error) {
-
-                    console.log(
-                        "Audio could not start:",
-                        error
-                    );
-
-                }
+                player.classList.remove(
+                    "playing"
+                );
 
             }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   DEPTH COUNTER
+   ========================================================= */
+
+function initDepthCounter() {
+
+    const counter =
+        document.getElementById(
+            "depthNumber"
+        );
+
+
+    if (!counter) {
+        return;
+    }
+
+
+    let currentDepth = 0;
+
+    function updateDepth() {
+
+        const maxScroll =
+            document.documentElement
+                .scrollHeight -
+            window.innerHeight;
+
+
+        if (maxScroll <= 0) {
+            return;
+        }
+
+
+        const progress =
+            window.scrollY /
+            maxScroll;
+
+
+        const target =
+            Math.floor(
+                progress * 1200
+            );
+
+
+        currentDepth +=
+            (target - currentDepth)
+            * 0.12;
+
+
+        counter.textContent =
+            String(
+                Math.floor(currentDepth)
+            ).padStart(3, "0");
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateDepth,
+        { passive: true }
+    );
+
+
+    function animate() {
+
+        updateDepth();
+
+        requestAnimationFrame(
+            animate
         );
 
     }
 
 
-    /* =====================================================
-       CLICK RIPPLE
-    ===================================================== */
+    animate();
+
+}
+
+
+/* =========================================================
+   NEXUS BUTTON
+   ========================================================= */
+
+function initNexusButton() {
+
+    const button =
+        document.getElementById(
+            "nexusButton"
+        );
+
+
+    if (!button) {
+        return;
+    }
+
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            document.body.dataset.theme =
+                "nexus";
+
+
+            localStorage.setItem(
+                "myOceanTheme",
+                "nexus"
+            );
+
+
+            const themeText =
+                document.getElementById(
+                    "themeText"
+                );
+
+
+            if (themeText) {
+
+                themeText.textContent =
+                    "NEXUS";
+
+            }
+
+
+            createNexusParticles();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   NEXUS PARTICLES
+   ========================================================= */
+
+function createNexusParticles() {
+
+    for (
+        let i = 0;
+        i < 35;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.style.position =
+            "fixed";
+
+        particle.style.left =
+            "50%";
+
+        particle.style.top =
+            "50%";
+
+        particle.style.width =
+            "3px";
+
+        particle.style.height =
+            "3px";
+
+        particle.style.borderRadius =
+            "50%";
+
+        particle.style.background =
+            "#8f7aff";
+
+        particle.style.boxShadow =
+            "0 0 12px #8f7aff";
+
+        particle.style.pointerEvents =
+            "none";
+
+        particle.style.zIndex =
+            "9997";
+
+
+        const angle =
+            Math.random() *
+            Math.PI * 2;
+
+
+        const distance =
+            150 +
+            Math.random() * 500;
+
+
+        const x =
+            Math.cos(angle) *
+            distance;
+
+
+        const y =
+            Math.sin(angle) *
+            distance;
+
+
+        document.body.appendChild(
+            particle
+        );
+
+
+        particle.animate(
+            [
+                {
+                    transform:
+                        "translate(-50%, -50%) scale(0)",
+                    opacity: 1
+                },
+                {
+                    transform:
+                        `translate(
+                            calc(-50% + ${x}px),
+                            calc(-50% + ${y}px)
+                        )
+                        scale(1)`,
+                    opacity: 0
+                }
+            ],
+            {
+                duration:
+                    900 +
+                    Math.random() * 700,
+
+                easing:
+                    "cubic-bezier(.16,1,.3,1)"
+            }
+        ).onfinish =
+            () => {
+
+                particle.remove();
+
+            };
+
+    }
+
+}
+
+
+/* =========================================================
+   CLICK RIPPLE
+   ========================================================= */
+
+function initClickEffects() {
 
     document.addEventListener(
         "click",
-        (event) => {
+        event => {
 
             const ripple =
                 document.createElement(
@@ -704,26 +1064,23 @@ document.addEventListener("DOMContentLoaded", () => {
             ripple.style.height =
                 "10px";
 
-            ripple.style.border =
-                "1px solid var(--accent)";
-
             ripple.style.borderRadius =
                 "50%";
+
+            ripple.style.border =
+                "1px solid var(--cyan)";
 
             ripple.style.pointerEvents =
                 "none";
 
             ripple.style.zIndex =
-                "9997";
+                "9999";
 
             ripple.style.transform =
                 "translate(-50%, -50%)";
 
             ripple.style.boxShadow =
-                "0 0 20px var(--accent)";
-
-            ripple.style.transition =
-                "all 0.7s ease";
+                "0 0 20px var(--cyan)";
 
 
             document.body.appendChild(
@@ -731,155 +1088,32 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-            requestAnimationFrame(() => {
+            ripple.animate(
+                [
+                    {
+                        width: "10px",
+                        height: "10px",
+                        opacity: 0.8
+                    },
+                    {
+                        width: "100px",
+                        height: "100px",
+                        opacity: 0
+                    }
+                ],
+                {
+                    duration: 600,
+                    easing:
+                        "cubic-bezier(.16,1,.3,1)"
+                }
+            ).onfinish =
+                () => {
 
-                ripple.style.width =
-                    "100px";
+                    ripple.remove();
 
-                ripple.style.height =
-                    "100px";
-
-                ripple.style.opacity =
-                    "0";
-
-            });
-
-
-            setTimeout(() => {
-
-                ripple.remove();
-
-            }, 750);
+                };
 
         }
     );
 
-
-    /* =====================================================
-       HOVER SOUND-LIKE EFFECT
-       VISUAL ONLY
-    ===================================================== */
-
-    const interactive =
-        document.querySelectorAll(
-            "a, button, .hobby-card, .data-card"
-        );
-
-
-    interactive.forEach(
-        (element) => {
-
-            element.addEventListener(
-                "mouseenter",
-                () => {
-
-                    element.style.setProperty(
-                        "--hover-light",
-                        "1"
-                    );
-
-                }
-            );
-
-
-            element.addEventListener(
-                "mouseleave",
-                () => {
-
-                    element.style.removeProperty(
-                        "--hover-light"
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       RANDOM MICRO PARTICLES
-    ===================================================== */
-
-    function createParticle() {
-
-        const particle =
-            document.createElement(
-                "span"
-            );
-
-
-        particle.style.position =
-            "fixed";
-
-        particle.style.width =
-            "2px";
-
-        particle.style.height =
-            "2px";
-
-        particle.style.borderRadius =
-            "50%";
-
-        particle.style.background =
-            "var(--accent)";
-
-        particle.style.boxShadow =
-            "0 0 8px var(--accent)";
-
-        particle.style.pointerEvents =
-            "none";
-
-        particle.style.opacity =
-            "0.35";
-
-        particle.style.left =
-            Math.random() * 100 +
-            "vw";
-
-        particle.style.top =
-            Math.random() * 100 +
-            "vh";
-
-        particle.style.zIndex =
-            "-1";
-
-        particle.style.transition =
-            "transform 6s linear, opacity 6s linear";
-
-
-        document.body.appendChild(
-            particle
-        );
-
-
-        requestAnimationFrame(() => {
-
-            particle.style.transform =
-                `translate(
-                    ${(Math.random() - 0.5) * 120}px,
-                    ${-100 - Math.random() * 150}px
-                )`;
-
-            particle.style.opacity =
-                "0";
-
-        });
-
-
-        setTimeout(() => {
-
-            particle.remove();
-
-        }, 6000);
-
-    }
-
-
-    setInterval(
-        createParticle,
-        900
-    );
-
-
-});
+}
