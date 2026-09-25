@@ -1,88 +1,77 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
+
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="Supitchaya's Ocean World — Deep Ocean & Sci-Fi Student Portfolio"
-    >
+    <meta name="theme-color"
+          content="#020b14">
 
-    <title>My Ocean World | สุพิชญา บุตรต๊ะ</title>
+    <title>My Ocean World | สุพิชญา</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
-<body>
+<body data-theme="abyss">
 
-    <!-- =========================================
-         LOADING SCREEN
-    ========================================== -->
+    <!-- ============================= -->
+    <!-- LOADING SCREEN -->
+    <!-- ============================= -->
 
-    <div
-        class="loading-screen"
-        id="loadingScreen"
-    >
+    <div id="loader">
 
         <div class="loader-ocean">
 
             <div class="loader-ring"></div>
 
-            <div class="loader-diver">
-                🤿
+            <div class="loader-core">
+                ◇
             </div>
 
-            <div class="loader-title">
-                DIVING INTO MY WORLD
-            </div>
+        </div>
 
-            <div class="loader-subtitle">
-                Entering the Abyss...
-            </div>
+        <div class="loader-title">
+            DIVING INTO MY WORLD
+        </div>
 
-            <div class="loader-progress">
-                <span></span>
-            </div>
+        <div class="loader-subtitle">
+            Initializing ocean system...
+        </div>
 
-            <div class="loader-percent">
-                0%
-            </div>
+        <div class="loader-bar">
+            <span></span>
+        </div>
 
+        <div class="loader-percent">
+            000%
         </div>
 
     </div>
 
 
-    <!-- =========================================
-         MOUSE GLOW
-    ========================================== -->
+    <!-- ============================= -->
+    <!-- MOUSE GLOW -->
+    <!-- ============================= -->
 
-    <div
-        class="mouse-glow"
-        id="mouseGlow"
-    ></div>
+    <div class="mouse-glow"></div>
 
 
-    <!-- =========================================
-         OCEAN BACKGROUND
-    ========================================== -->
+    <!-- ============================= -->
+    <!-- OCEAN BACKGROUND -->
+    <!-- ============================= -->
 
     <div class="ocean-background">
 
-        <div class="water-gradient"></div>
+        <div class="water-light"></div>
 
-        <div class="sun-rays"></div>
+        <div class="water-light water-light-2"></div>
 
-        <div class="deep-haze"></div>
+        <div class="particle-field"></div>
+
 
         <!-- BUBBLES -->
 
@@ -94,286 +83,275 @@
         <div class="bubble bubble-6"></div>
         <div class="bubble bubble-7"></div>
         <div class="bubble bubble-8"></div>
+        <div class="bubble bubble-9"></div>
+        <div class="bubble bubble-10"></div>
+
 
         <!-- FISH -->
 
-        <div class="sea-creature fish fish-1">
-            🐟
-        </div>
+        <div class="sea-creature fish fish-1">🐟</div>
+        <div class="sea-creature fish fish-2">🐠</div>
+        <div class="sea-creature fish fish-3">🐡</div>
+        <div class="sea-creature fish fish-4">🐟</div>
+        <div class="sea-creature fish fish-5">🐠</div>
+        <div class="sea-creature fish fish-6">🐟</div>
 
-        <div class="sea-creature fish fish-2">
-            🐠
-        </div>
-
-        <div class="sea-creature fish fish-3">
-            🐟
-        </div>
-
-        <div class="sea-creature fish fish-4">
-            🐡
-        </div>
 
         <!-- JELLYFISH -->
 
-        <div class="sea-creature jelly jelly-1">
-            🪼
+        <div class="sea-creature jelly jelly-1">🪼</div>
+        <div class="sea-creature jelly jelly-2">🪼</div>
+        <div class="sea-creature jelly jelly-3">🪼</div>
+
+
+        <!-- SQUID -->
+
+        <div class="sea-creature squid squid-1">
+            🦑
         </div>
 
-        <div class="sea-creature jelly jelly-2">
-            🪼
+
+        <!-- WHALE -->
+
+        <div class="whale-shadow">
+            ◀━━━━━━
         </div>
 
-        <!-- LARGE SILHOUETTE -->
-
-        <div class="giant-shadow">
-            🐋
-        </div>
 
         <!-- CORAL -->
 
-        <div class="coral coral-1">
-            🪸
-        </div>
-
-        <div class="coral coral-2">
-            🪸
-        </div>
-
-        <div class="coral coral-3">
-            🪸
-        </div>
+        <div class="coral coral-1">🪸</div>
+        <div class="coral coral-2">🪸</div>
+        <div class="coral coral-3">🪸</div>
 
     </div>
 
 
-    <!-- =========================================
-         NAVIGATION
-    ========================================== -->
+    <!-- ============================= -->
+    <!-- NAVIGATION -->
+    <!-- ============================= -->
 
-    <header
-        class="site-header"
-        id="siteHeader"
-    >
+    <header class="main-header">
 
-        <nav class="navbar">
+        <a href="index.html" class="logo">
 
-            <a
-                href="index.html"
-                class="logo"
-            >
+            <span class="logo-symbol">
+                ◇
+            </span>
 
-                <span class="logo-symbol">
-                    ◈
-                </span>
+            <span>
+                MY OCEAN
+            </span>
 
-                <span>
-                    MY OCEAN
-                </span>
+        </a>
 
+
+        <nav class="desktop-nav">
+
+            <a href="index.html" class="active">
+                หน้าแรก
             </a>
 
+            <a href="profile.html">
+                ประวัติส่วนตัว
+            </a>
+
+            <a href="education.html">
+                การศึกษา
+            </a>
+
+            <a href="hobby.html">
+                งานอดิเรก
+            </a>
+
+            <a href="contact.html">
+                ติดต่อ
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
 
             <button
-                class="menu-toggle"
-                id="menuToggle"
-                aria-label="เปิดเมนู"
-            >
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </button>
-
-
-            <div
-                class="nav-links"
-                id="navLinks"
-            >
-
-                <a
-                    href="index.html"
-                    class="active"
-                >
-                    หน้าแรก
-                </a>
-
-                <a href="profile.html">
-                    ประวัติส่วนตัว
-                </a>
-
-                <a href="education.html">
-                    การศึกษา
-                </a>
-
-                <a href="hobby.html">
-                    งานอดิเรก
-                </a>
-
-                <a href="contact.html">
-                    ติดต่อ
-                </a>
-
-            </div>
-
-
-            <button
-                class="theme-switch"
-                id="themeSwitch"
-            >
+                class="theme-button"
+                id="themeToggle"
+                type="button">
 
                 <span class="theme-icon">
                     ◉
                 </span>
 
-                <span class="theme-text">
+                <span id="themeText">
                     ABYSS
                 </span>
 
             </button>
 
-        </nav>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                type="button"
+                aria-label="เปิดเมนู">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
 
     </header>
 
 
-    <!-- =========================================
-         HERO SECTION
-    ========================================== -->
+    <!-- MOBILE MENU -->
+
+    <div class="mobile-menu" id="mobileMenu">
+
+        <a href="index.html">
+            หน้าแรก
+        </a>
+
+        <a href="profile.html">
+            ประวัติส่วนตัว
+        </a>
+
+        <a href="education.html">
+            การศึกษา
+        </a>
+
+        <a href="hobby.html">
+            งานอดิเรก
+        </a>
+
+        <a href="contact.html">
+            ติดต่อ
+        </a>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- HERO -->
+    <!-- ============================= -->
 
     <main>
 
-        <section class="hero">
+        <section class="hero-section">
 
-            <div class="hero-content">
+            <div class="hero-grid"></div>
 
-                <div
-                    class="hero-kicker reveal"
-                >
-                    <span class="status-dot"></span>
+            <div class="hero-content reveal">
 
-                    DEEP OCEAN PORTFOLIO
-
+                <div class="eyebrow">
+                    00 / DEEP OCEAN PORTFOLIO
                 </div>
 
+                <h1>
 
-                <h1
-                    class="hero-title reveal"
-                >
+                    WELCOME
+                    <br>
 
-                    <span class="small-title">
-                        WELCOME TO
-                    </span>
+                    <span>TO MY</span>
 
-                    <span class="big-title">
-                        MY
-                    </span>
-
-                    <span class="big-title accent">
-                        OCEAN
-                    </span>
-
-                    <span class="big-title">
-                        WORLD
-                    </span>
+                    <strong>
+                        OCEAN WORLD
+                    </strong>
 
                 </h1>
 
 
-                <p
-                    class="hero-description reveal"
-                >
+                <p class="hero-description">
 
                     สวัสดี ฉันชื่อ
-                    <strong>
-                        สุพิชญา บุตรต๊ะ
-                    </strong>
+                    <strong>สุพิชญา บุตรต๊ะ</strong>
+                    หรือ “แก้ม”
 
-                    หรือ
-
-                    <strong>
-                        “แก้ม”
-                    </strong>
+                    <br>
 
                     นักเรียนชั้น ม.3/2
                     จากโรงเรียนจอมทอง
 
-                </p>
+                    <br>
 
-
-                <p
-                    class="hero-quote reveal"
-                >
-
-                    “ศิลปะคือหนึ่งในจิตวิญญาณของฉัน”
+                    <span>
+                        “ศิลปะคือหนึ่งในจิตวิญญาณของฉัน”
+                    </span>
 
                 </p>
 
 
-                <div
-                    class="hero-actions reveal"
-                >
+                <div class="hero-buttons">
 
                     <a
                         href="profile.html"
-                        class="btn btn-primary"
-                    >
+                        class="btn btn-primary">
 
-                        <span>
-                            รู้จักฉันมากขึ้น
-                        </span>
-
-                        <span class="btn-arrow">
-                            →
-                        </span>
+                        สำรวจโลกของฉัน
+                        <span>→</span>
 
                     </a>
 
 
                     <a
                         href="hobby.html"
-                        class="btn btn-secondary"
-                    >
+                        class="btn btn-outline">
 
-                        <span>
-                            สำรวจงานอดิเรก
-                        </span>
-
-                        <span class="btn-arrow">
-                            ↗
-                        </span>
+                        สิ่งที่ฉันรัก
+                        <span>↓</span>
 
                     </a>
 
                 </div>
 
+            </div>
 
-                <!-- DEPTH INDICATOR -->
+
+            <!-- HERO SIDE PANEL -->
+
+            <div class="depth-panel reveal">
+
+                <div class="panel-label">
+                    CURRENT DEPTH
+                </div>
 
                 <div
-                    class="depth-panel reveal"
-                >
+                    class="depth-number"
+                    id="depthNumber">
 
-                    <div class="depth-label">
-                        CURRENT DEPTH
+                    000
+
+                </div>
+
+                <div class="depth-unit">
+                    METERS BELOW
+                </div>
+
+
+                <div class="depth-line">
+
+                    <span></span>
+
+                </div>
+
+
+                <div class="coordinates">
+
+                    <div>
+                        <span>X</span>
+                        18.6823
                     </div>
 
-                    <div class="depth-value">
-                        <span id="depthValue">
-                            000
-                        </span>
-
-                        <small>
-                            M
-                        </small>
+                    <div>
+                        <span>Y</span>
+                        98.6506
                     </div>
 
-                    <div class="depth-line">
-
-                        <span
-                            id="depthProgress"
-                        ></span>
-
+                    <div>
+                        <span>ZONE</span>
+                        CM-TH
                     </div>
 
                 </div>
@@ -381,144 +359,75 @@
             </div>
 
 
-            <!-- =================================
-                 HERO PROFILE
-            ================================== -->
+            <!-- PROFILE CARD -->
 
-            <div
-                class="hero-visual reveal"
-            >
+            <div class="hero-profile-card reveal">
 
-                <div
-                    class="orbital-ring ring-one"
-                ></div>
+                <div class="profile-photo">
 
-                <div
-                    class="orbital-ring ring-two"
-                ></div>
+                    <img
+                        src="images/profile.jpg"
+                        alt="รูปโปรไฟล์ของสุพิชญา"
+                        class="profile-image">
 
-                <div
-                    class="orbital-ring ring-three"
-                ></div>
+                    <div class="photo-placeholder">
 
+                        <span>◇</span>
 
-                <div
-                    class="profile-orb"
-                >
-
-                    <div
-                        class="profile-image-frame"
-                    >
-
-                        <!--
-                            ==================================
-                            รูปโปรไฟล์ของแก้ม
-
-                            ให้นำรูปของตัวเองมาใส่ที่
-
-                            images/profile.jpg
-
-                            ==================================
-                        -->
-
-                        <img
-                            src="images/profile.jpg"
-                            alt="รูปโปรไฟล์ของแก้ม"
-                            class="profile-image"
-                        >
-
-                        <div
-                            class="image-placeholder"
-                        >
-
-                            <span>
-                                YOUR
-                            </span>
-
-                            <strong>
-                                PHOTO
-                            </strong>
-
-                        </div>
+                        YOUR PHOTO
 
                     </div>
 
-
-                    <div
-                        class="orb-glow"
-                    ></div>
+                    <div class="scan-line"></div>
 
                 </div>
 
 
-                <!-- FLOATING DATA -->
+                <div class="profile-card-info">
 
-                <div
-                    class="floating-data data-one"
-                >
-
-                    <span class="data-icon">
-                        ◈
-                    </span>
-
-                    <div>
-
-                        <small>
-                            STUDENT
-                        </small>
-
-                        <strong>
-                            M.3 / 2
-                        </strong>
-
+                    <div class="tiny-label">
+                        STUDENT
                     </div>
+
+                    <h3>
+                        สุพิชญา
+                    </h3>
+
+                    <p>
+                        M.3 / 2
+                    </p>
 
                 </div>
 
-
-                <div
-                    class="floating-data data-two"
-                >
-
-                    <span class="data-icon">
-                        ◉
-                    </span>
-
-                    <div>
-
-                        <small>
-                            LOCATION
-                        </small>
-
-                        <strong>
-                            CHIANG MAI
-                        </strong>
-
-                    </div>
-
-                </div>
+            </div>
 
 
-                <div
-                    class="floating-data data-three"
-                >
+            <!-- FLOATING DATA -->
 
-                    <span class="data-icon">
-                        ✦
-                    </span>
+            <div class="floating-data data-1">
+                <span>01</span>
+                ART
+            </div>
 
-                    <div>
+            <div class="floating-data data-2">
+                <span>02</span>
+                MUSIC
+            </div>
 
-                        <small>
-                            PASSION
-                        </small>
+            <div class="floating-data data-3">
+                <span>03</span>
+                DREAM
+            </div>
 
-                        <strong>
-                            ART
-                        </strong>
 
-                    </div>
+            <div class="scroll-cue">
 
+                <span>
+                    SCROLL TO DIVE
+                </span>
+
+                <div class="scroll-arrow">
+                    ↓
                 </div>
 
             </div>
@@ -526,140 +435,62 @@
         </section>
 
 
-        <!-- =========================================
-             SCROLL INDICATOR
-        ========================================== -->
+        <!-- ============================= -->
+        <!-- INTRO -->
+        <!-- ============================= -->
 
-        <div
-            class="scroll-indicator"
-        >
+        <section class="ocean-intro section-padding">
 
-            <span>
-                SCROLL TO DIVE
-            </span>
-
-            <div class="scroll-line">
-                <span></span>
-            </div>
-
-        </div>
-
-
-        <!-- =========================================
-             INTRO SECTION
-        ========================================== -->
-
-        <section
-            class="intro-section section-padding"
-        >
-
-            <div class="section-heading reveal">
-
-                <span class="section-number">
-                    01
-                </span>
-
-                <span class="section-label">
-                    ABOUT MY WORLD
-                </span>
-
-                <h2>
-                    A QUIET MIND
-                    <br>
-                    IN A
-                    <span>
-                        VAST OCEAN
-                    </span>
-                </h2>
-
+            <div class="section-number">
+                01
+                <span>ABOUT MY WORLD</span>
             </div>
 
 
-            <div
-                class="intro-grid"
-            >
+            <div class="intro-layout">
 
-                <div
-                    class="intro-main glass-panel reveal"
-                >
+                <div class="intro-title reveal">
 
-                    <div class="panel-corner"></div>
-
-                    <div class="panel-status">
-                        ● PERSONAL LOG
+                    <div class="small-label">
+                        THE QUIET SIDE
                     </div>
 
-                    <p>
+                    <h2>
+                        A QUIET
+                        <br>
+                        <span>MIND</span>
+                    </h2>
 
-                        ฉันเป็นนักเรียนที่ชอบเรียนรู้
-                        และอยากออกไปสำรวจโลกกว้าง
-                        ค้นหาความรู้ใหม่ ๆ
-                        และได้ทำในสิ่งที่ตัวเองรัก
+                </div>
 
-                    </p>
 
-                    <p>
+                <div class="intro-text reveal">
 
-                        สำหรับฉัน
-                        <strong>
-                            ศิลปะ
-                        </strong>
-                        ไม่ได้เป็นเพียงงานอดิเรก
-                        แต่มันเป็นพื้นที่ที่ทำให้ฉัน
-                        ได้แสดงความคิดและจินตนาการ
+                    <p class="large-text">
+
+                        โลกของฉันอาจไม่ได้เสียงดัง
+                        แต่เต็มไปด้วยเรื่องราวเล็ก ๆ
+                        ที่ฉันอยากค้นหา
 
                     </p>
 
+                    <p>
+
+                        ฉันชอบวาดภาพ ฟังเพลง ร้องเพลง
+                        ประดิษฐ์สิ่งต่าง ๆ เล่นเกม
+                        และบางครั้งก็แค่ได้นอนพัก
+                        แล้วปล่อยให้ความคิดล่องลอยไป
+
+                    </p>
 
                     <a
                         href="profile.html"
-                        class="text-link"
-                    >
+                        class="text-link">
 
-                        EXPLORE MY STORY
-                        <span>
-                            →
-                        </span>
+                        READ MY STORY
+                        <span>↗</span>
 
                     </a>
-
-                </div>
-
-
-                <div
-                    class="mini-stat reveal"
-                >
-
-                    <div class="stat-icon">
-                        ✦
-                    </div>
-
-                    <div class="stat-number">
-                        M.3
-                    </div>
-
-                    <div class="stat-label">
-                        CURRENT LEVEL
-                    </div>
-
-                </div>
-
-
-                <div
-                    class="mini-stat reveal"
-                >
-
-                    <div class="stat-icon">
-                        ◇
-                    </div>
-
-                    <div class="stat-number">
-                        ART
-                    </div>
-
-                    <div class="stat-label">
-                        MY PASSION
-                    </div>
 
                 </div>
 
@@ -668,64 +499,36 @@
         </section>
 
 
-        <!-- =========================================
-             OCEAN DIVIDER
-        ========================================== -->
+        <!-- ============================= -->
+        <!-- HIGHLIGHTS -->
+        <!-- ============================= -->
 
-        <div class="ocean-divider">
+        <section class="highlights-section section-padding">
 
-            <div class="divider-wave"></div>
+            <div class="section-heading reveal">
 
-            <span>
-                ↓ DESCEND DEEPER ↓
-            </span>
-
-        </div>
-
-
-        <!-- =========================================
-             HIGHLIGHTS
-        ========================================== -->
-
-        <section
-            class="highlights-section section-padding"
-        >
-
-            <div
-                class="section-heading centered reveal"
-            >
-
-                <span class="section-number">
+                <div class="section-number">
                     02
-                </span>
-
-                <span class="section-label">
-                    MY HIGHLIGHTS
-                </span>
+                    <span>MY SIGNALS</span>
+                </div>
 
                 <h2>
                     THINGS THAT
-                    <span>
-                        DEFINE ME
-                    </span>
+                    <span>LIGHT ME UP</span>
                 </h2>
 
             </div>
 
 
-            <div
-                class="highlight-grid"
-            >
+            <div class="highlight-grid">
 
-                <article
-                    class="highlight-card reveal"
-                >
+                <article class="highlight-card reveal tilt-card">
 
-                    <div class="highlight-icon">
-                        🎨
+                    <div class="card-icon">
+                        ✦
                     </div>
 
-                    <div class="highlight-number">
+                    <div class="card-number">
                         01
                     </div>
 
@@ -734,30 +537,25 @@
                     </h3>
 
                     <p>
-                        การวาดภาพและการสร้างสรรค์
-                        คือหนึ่งในสิ่งที่ฉันรัก
+                        การวาดภาพคือพื้นที่
+                        ที่ความคิดและจินตนาการ
+                        สามารถกลายเป็นสิ่งที่มองเห็นได้
                     </p>
 
-                    <a
-                        href="hobby.html"
-                        class="card-link"
-                    >
-                        DISCOVER
-                        →
+                    <a href="hobby.html">
+                        EXPLORE →
                     </a>
 
                 </article>
 
 
-                <article
-                    class="highlight-card reveal"
-                >
+                <article class="highlight-card reveal tilt-card">
 
-                    <div class="highlight-icon">
-                        🎧
+                    <div class="card-icon">
+                        ♪
                     </div>
 
-                    <div class="highlight-number">
+                    <div class="card-number">
                         02
                     </div>
 
@@ -766,30 +564,24 @@
                     </h3>
 
                     <p>
-                        เสียงเพลงเป็นอีกโลกหนึ่ง
-                        ที่ฉันชอบเข้าไปค้นหา
+                        เสียงเพลงเป็นเหมือนพื้นที่เงียบ ๆ
+                        ที่ทำให้ฉันได้อยู่กับตัวเอง
                     </p>
 
-                    <a
-                        href="hobby.html"
-                        class="card-link"
-                    >
-                        DISCOVER
-                        →
+                    <a href="hobby.html">
+                        EXPLORE →
                     </a>
 
                 </article>
 
 
-                <article
-                    class="highlight-card reveal"
-                >
+                <article class="highlight-card reveal tilt-card">
 
-                    <div class="highlight-icon">
-                        🌌
+                    <div class="card-icon">
+                        ◈
                     </div>
 
-                    <div class="highlight-number">
+                    <div class="card-number">
                         03
                     </div>
 
@@ -798,30 +590,25 @@
                     </h3>
 
                     <p>
-                        ฉันอยากออกสำรวจโลกกว้าง
-                        และค้นหาความรู้ใหม่ ๆ
+                        ฉันอยากออกไปสำรวจโลกกว้าง
+                        เรียนรู้สิ่งใหม่ ๆ
+                        และค้นหาสิ่งที่ตัวเองรัก
                     </p>
 
-                    <a
-                        href="profile.html"
-                        class="card-link"
-                    >
-                        DISCOVER
-                        →
+                    <a href="education.html">
+                        EXPLORE →
                     </a>
 
                 </article>
 
 
-                <article
-                    class="highlight-card reveal"
-                >
+                <article class="highlight-card reveal tilt-card">
 
-                    <div class="highlight-icon">
-                        👩‍🏫
+                    <div class="card-icon">
+                        ∞
                     </div>
 
-                    <div class="highlight-number">
+                    <div class="card-number">
                         04
                     </div>
 
@@ -830,16 +617,12 @@
                     </h3>
 
                     <p>
-                        เป้าหมายในอนาคตของฉัน
-                        คือการได้เป็นคุณครู
+                        เป้าหมายของฉันคือการได้เป็นครู
+                        และส่งต่อความรู้ให้กับคนอื่น
                     </p>
 
-                    <a
-                        href="education.html"
-                        class="card-link"
-                    >
-                        DISCOVER
-                        →
+                    <a href="education.html">
+                        EXPLORE →
                     </a>
 
                 </article>
@@ -849,49 +632,90 @@
         </section>
 
 
-        <!-- =========================================
-             FINAL CTA
-        ========================================== -->
+        <!-- ============================= -->
+        <!-- NEXUS PREVIEW -->
+        <!-- ============================= -->
 
-        <section
-            class="final-cta section-padding"
-        >
+        <section class="nexus-preview section-padding">
 
-            <div
-                class="cta-orbit"
-            ></div>
+            <div class="nexus-grid"></div>
 
-            <div
-                class="cta-content reveal"
-            >
+            <div class="nexus-content reveal">
 
-                <span class="section-label">
-                    THE JOURNEY CONTINUES
-                </span>
+                <div class="eyebrow">
+                    NEXT LEVEL / NEXUS
+                </div>
 
                 <h2>
-                    READY TO
-                    <span>
-                        DIVE?
-                    </span>
+                    FROM
+                    <span>ABYSS</span>
+                    <br>
+                    TO THE
+                    <strong>NEXUS</strong>
                 </h2>
 
                 <p>
-                    สำรวจเรื่องราว การเรียนรู้
-                    ความสนใจ และโลกใบเล็ก ๆ
-                    ของฉันต่อไป
+
+                    อีกด้านหนึ่งของมหาสมุทร
+                    ไม่ได้มีเพียงความมืด
+
+                    <br>
+
+                    แต่ยังมีแสง เมืองใต้น้ำ
+                    เทคโนโลยี และอนาคต
+                    ที่กำลังรอให้เราออกไปค้นพบ
+
+                </p>
+
+
+                <button
+                    class="nexus-button"
+                    id="nexusButton"
+                    type="button">
+
+                    ACTIVATE NEXUS
+
+                    <span>
+                        ⟶
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- FINAL -->
+        <!-- ============================= -->
+
+        <section class="final-section section-padding">
+
+            <div class="final-orbit"></div>
+
+            <div class="final-content reveal">
+
+                <div class="small-label">
+                    END OF THE DIVE
+                </div>
+
+                <h2>
+                    THERE'S MORE
+                    <br>
+                    <span>BELOW.</span>
+                </h2>
+
+                <p>
+                    ยินดีต้อนรับเข้าสู่โลกของฉัน
                 </p>
 
                 <a
                     href="contact.html"
-                    class="btn btn-primary"
-                >
+                    class="btn btn-primary">
 
-                    ENTER THE NEXT LEVEL
-
-                    <span>
-                        →
-                    </span>
+                    CONTACT ME
+                    <span>→</span>
 
                 </a>
 
@@ -902,149 +726,105 @@
     </main>
 
 
-    <!-- =========================================
-         AUDIO PLAYER
-    ========================================== -->
+    <!-- ============================= -->
+    <!-- AUDIO PLAYER -->
+    <!-- ============================= -->
 
-    <div
-        class="audio-dock"
-        id="audioDock"
-    >
-
-        <button
-            class="audio-toggle"
-            id="audioToggle"
-            aria-label="เปิดหรือหยุดเพลง"
-        >
-            ▶
-        </button>
+    <div class="audio-player" id="audioPlayer">
 
         <div class="audio-info">
 
-            <span>
-                OCEAN AUDIO
-            </span>
+            <div class="audio-disc">
+                ♪
+            </div>
 
-            <strong>
-                Wicked Game
-            </strong>
+            <div>
+
+                <span>
+                    OCEAN AUDIO
+                </span>
+
+                <strong>
+                    Wicked Game
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="audioToggle"
+            type="button"
+            aria-label="เปิดหรือปิดเพลง">
+
+            ▶
+
+        </button>
+
+
+        <div class="audio-bars">
+
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
 
         </div>
 
-        <div
-            class="audio-wave"
-            id="audioWave"
-        >
-
-            <i></i>
-            <i></i>
-            <i></i>
-            <i></i>
-            <i></i>
-
-        </div>
 
         <audio
             id="oceanAudio"
-            loop
-        >
-
-            <source
-                src="audio/wicked-game.mp3"
-                type="audio/mpeg"
-            >
+            src="audio/wicked-game.mp3"
+            loop>
 
         </audio>
 
     </div>
 
 
-    <!-- =========================================
-         FOOTER
-    ========================================== -->
+    <!-- ============================= -->
+    <!-- FOOTER -->
+    <!-- ============================= -->
 
     <footer class="site-footer">
 
-        <div class="footer-inner">
+        <div>
 
-            <div class="footer-brand">
+            <strong>
+                ◇ MY OCEAN
+            </strong>
 
-                <div class="footer-logo">
-                    ◈ MY OCEAN
-                </div>
+            <p>
+                Student Portfolio
+                / Exploring my world,
+                one wave at a time.
+            </p>
 
-                <p>
-                    Exploring my world,
-                    one wave at a time.
-                </p>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <a href="index.html">
-                    HOME
-                </a>
-
-                <a href="profile.html">
-                    PROFILE
-                </a>
-
-                <a href="education.html">
-                    EDUCATION
-                </a>
-
-                <a href="hobby.html">
-                    HOBBIES
-                </a>
-
-                <a href="contact.html">
-                    CONTACT
-                </a>
-
-            </div>
+        </div>
 
 
-            <div class="footer-meta">
+        <div class="footer-right">
 
-                <span>
-                    SUPITCHAYA BUTTA
-                </span>
-
-                <span>
-                    M.3 / 2
-                </span>
-
-                <span>
-                    © 2026
-                </span>
-
-            </div>
+            © 2026
+            สุพิชญา บุตรต๊ะ
+            · M.3 Student Portfolio
 
         </div>
 
     </footer>
 
 
-    <!-- =========================================
-         SCROLL PROGRESS
-    ========================================== -->
+    <!-- SCROLL PROGRESS -->
 
     <div
         class="scroll-progress"
-        id="scrollProgress"
-    ></div>
+        id="scrollProgress">
+    </div>
 
 
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================== -->
-
-    <script
-        src="script.js"
-    ></script>
+    <script src="script.js"></script>
 
 </body>
-
 </html>
